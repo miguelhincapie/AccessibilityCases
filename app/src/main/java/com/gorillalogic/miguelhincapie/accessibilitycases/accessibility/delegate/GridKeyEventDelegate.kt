@@ -5,8 +5,7 @@ import android.view.KeyEvent.*
 import android.view.View
 import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.BaseKeyEventDelegate
 
-class GridKeyEventDelegate :
-    BaseKeyEventDelegate {
+class GridKeyEventDelegate : BaseKeyEventDelegate {
 
     override fun processKeyEvent(currentFocus: View, event: KeyEvent): Boolean {
         return when(event.keyCode) {

@@ -33,21 +33,15 @@ class KeyEventHandler {
             AccessibilityStateDelegate()
         )
         keyEventActionMap.put(
-            createKey(
-                R.id.grid_container,
-                KEYCODE_DPAD_DOWN,
-                ACTION_DOWN
-            ), gridKeyEventDelegate)
+            createKey(R.id.grid_container, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+            gridKeyEventDelegate
+        )
     }
 
     fun handleEvent(view: View, event: KeyEvent): Boolean {
         val key =
             if (KEYCODE_CHANGE_ACCESSIBILITY_STATE == event.keyCode) KEYCODE_CHANGE_ACCESSIBILITY_STATE
-            else createKey(
-                view.id,
-                event.keyCode,
-                event.action
-            )
+            else createKey(view.id, event.keyCode, event.action)
 
         return keyEventActionMap.get(key)
             ?.processKeyEvent(view, event)
