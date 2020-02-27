@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TextView"
+        android:importantForAccessibility="yes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,18 +22,22 @@
         android:layout_width="409dp"
         android:layout_height="309dp"
         android:layout_marginTop="24dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:listitem="@layout/grid_element_item" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carouselRV"
         android:layout_width="409dp"
         android:layout_height="176dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridRV" />
+        app:layout_constraintTop_toBottomOf="@id/gridRV"
+        tools:listitem="@layout/carousel_element_item" />
 
     <Button
         android:id="@+id/button1"
@@ -53,8 +58,8 @@
         android:layout_marginBottom="32dp"
         android:text="Button 2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button1" />
+        app:layout_constraintEnd_toStartOf="@id/button3"
+        app:layout_constraintStart_toEndOf="@id/button1" />
 
     <Button
         android:id="@+id/button3"
