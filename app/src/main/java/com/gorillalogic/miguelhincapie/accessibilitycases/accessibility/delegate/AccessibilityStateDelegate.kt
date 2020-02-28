@@ -1,13 +1,17 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate
 
-import android.view.KeyEvent
 import android.view.View
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.TalkBackFacade
 import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.BaseKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.KEYCODE_CHANGE_ACCESSIBILITY_STATE
+import com.gorillalogic.miguelhincapie.accessibilitycases.domain.TalkBackFacade
 
-class AccessibilityStateDelegate :
-    BaseKeyEventDelegate {
-    override fun processKeyEvent(currentFocus: View, event: KeyEvent): Boolean {
+@Suppress("UNUSED_PARAMETER")
+class AccessibilityStateDelegate : BaseKeyEventDelegate() {
+    init {
+        keyEventActionMap.put(KEYCODE_CHANGE_ACCESSIBILITY_STATE, this::changeAccessibilityState)
+    }
+
+    private fun changeAccessibilityState(currentFocus: View): Boolean {
         if (TalkBackFacade.isTalkBackEnabled())
             TalkBackFacade.disableTalkBack()
         else

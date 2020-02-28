@@ -31,7 +31,7 @@ class GridElementDelegateAdapter(private val listener: OnGridElementListener) :
         )
     ) {
         fun bind(gridElementViewType: GridElementViewType, listener: OnGridElementListener) {
-            itemView.title.text = gridElementViewType.gridElement.value
+            itemView.accessibility_state.text = gridElementViewType.gridElement.value
             itemView.setOnClickListener { listener.onGridElementClicked(gridElementViewType.gridElement) }
         }
     }

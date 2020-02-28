@@ -1,30 +1,31 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate
 
-import android.view.KeyEvent
 import android.view.KeyEvent.*
 import android.view.View
+import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.BaseKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.createKey
 
-class GridKeyEventDelegate : BaseKeyEventDelegate {
+class GridKeyEventDelegate : BaseKeyEventDelegate() {
 
-    override fun processKeyEvent(currentFocus: View, event: KeyEvent): Boolean {
-        return when(event.keyCode) {
-            KEYCODE_DPAD_DOWN -> onDownKeyPressed(currentFocus)
-            KEYCODE_DPAD_UP -> onUpKeyPressed(currentFocus)
-            KEYCODE_ENTER-> onEnterKeyPressed(currentFocus)
-            else -> false
+    init {
+        keyEventActionMap.let {
+            it.put(
+                createKey(R.id.grid_element_item, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                this::onDownKeyPressed
+            )
+            it.put(
+                createKey(R.id.grid_element_item, KEYCODE_DPAD_UP, ACTION_DOWN),
+                this::onUpKeyPressed
+            )
         }
     }
 
-    private fun onDownKeyPressed(currentFocus: View) : Boolean {
+    private fun onDownKeyPressed(currentFocus: View): Boolean {
         return false
     }
 
-    private fun onUpKeyPressed(currentFocus: View) : Boolean {
-        return false
-    }
-
-    private fun onEnterKeyPressed(currentFocus: View) : Boolean {
+    private fun onUpKeyPressed(currentFocus: View): Boolean {
         return false
     }
 }

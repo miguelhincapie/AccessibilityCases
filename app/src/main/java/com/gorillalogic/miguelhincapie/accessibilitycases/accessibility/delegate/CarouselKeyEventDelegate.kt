@@ -1,16 +1,23 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate
 
-import android.view.KeyEvent
+import android.view.KeyEvent.*
 import android.view.View
+import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.BaseKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.createKey
 
-class CarouselKeyEventDelegate : BaseKeyEventDelegate {
-    override fun processKeyEvent(currentFocus: View, event: KeyEvent): Boolean {
-        return when (event.keyCode) {
-            KeyEvent.KEYCODE_DPAD_DOWN -> onDownKeyPressed(currentFocus)
-            KeyEvent.KEYCODE_DPAD_UP -> onUpKeyPressed(currentFocus)
-            KeyEvent.KEYCODE_ENTER -> onEnterKeyPressed(currentFocus)
-            else -> false
+class CarouselKeyEventDelegate : BaseKeyEventDelegate() {
+
+    init {
+        keyEventActionMap.let {
+            it.put(
+                createKey(R.id.carousel_element_item, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                this::onDownKeyPressed
+            )
+            it.put(
+                createKey(R.id.carousel_element_item, KEYCODE_DPAD_UP, ACTION_DOWN),
+                this::onUpKeyPressed
+            )
         }
     }
 
@@ -19,10 +26,6 @@ class CarouselKeyEventDelegate : BaseKeyEventDelegate {
     }
 
     private fun onUpKeyPressed(currentFocus: View): Boolean {
-        return false
-    }
-
-    private fun onEnterKeyPressed(currentFocus: View): Boolean {
         return false
     }
 }

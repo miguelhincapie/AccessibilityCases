@@ -1,39 +1,42 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate
 
-import android.view.KeyEvent
+import android.view.KeyEvent.*
 import android.view.View
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.BaseKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.createKey
 
-class GeneralKeyEventDelegate : BaseKeyEventDelegate {
+class GeneralKeyEventDelegate : BaseKeyEventDelegate() {
 
-    override fun processKeyEvent(currentFocus: View, event: KeyEvent): Boolean {
-        return when (event.keyCode) {
-            KeyEvent.KEYCODE_DPAD_DOWN -> onDownKeyPressed(currentFocus)
-            KeyEvent.KEYCODE_DPAD_UP -> onUpKeyPressed(currentFocus)
-            else -> false
+    init {
+        keyEventActionMap.let {
+            it.put(
+                createKey(R.id.accessibility_state, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                this::consumeDownKeyOnTitle
+            )
+            it.put(
+                createKey(R.id.button1, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                this::consumeDownKeyOnButton1
+            )
+            it.put(
+                createKey(R.id.button2, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                this::consumeDownKeyOnButton2
+            )
+            it.put(
+                createKey(R.id.button1, KEYCODE_DPAD_UP, ACTION_DOWN),
+                this::consumeUpKeyOnButton1
+            )
+            it.put(
+                createKey(R.id.button2, KEYCODE_DPAD_UP, ACTION_DOWN),
+                this::consumeUpKeyOnButton2
+            )
+            it.put(
+                createKey(R.id.button3, KEYCODE_DPAD_UP, ACTION_DOWN),
+                this::consumeUpKeyOnButton3
+            )
         }
     }
 
-    private fun onDownKeyPressed(currentFocus: View): Boolean {
-        return when (currentFocus.id) {
-            R.id.title -> consumeDownKeyOnTitle(currentFocus)
-            R.id.button1 -> consumeDownKeyOnButton1(currentFocus)
-            R.id.button2 -> consumeDownKeyOnButton2(currentFocus)
-            else -> false
-        }
-    }
-
-    private fun onUpKeyPressed(currentFocus: View): Boolean {
-        return when (currentFocus.id) {
-            R.id.button1 -> consumeUpKeyOnButton1(currentFocus)
-            R.id.button2 -> consumeUpKeyOnButton2(currentFocus)
-            R.id.button3 -> consumeUpKeyOnButton3(currentFocus)
-            else -> false
-        }
-    }
-
-    //region consumeXxxOnYYYY functions
     private fun consumeDownKeyOnTitle(currentFocus: View): Boolean {
         currentFocus.nextFocusDownId = R.id.gridRV
         return false
@@ -63,5 +66,4 @@ class GeneralKeyEventDelegate : BaseKeyEventDelegate {
         currentFocus.nextFocusUpId = R.id.button2
         return false
     }
-    //endregion
 }

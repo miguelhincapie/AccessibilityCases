@@ -1,8 +1,10 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility
 
-import android.view.KeyEvent
 import android.view.View
+import androidx.collection.SparseArrayCompat
 
-interface BaseKeyEventDelegate {
-    fun processKeyEvent(currentFocus: View, event: KeyEvent): Boolean
+typealias KeyEventAction = (View) -> Boolean
+
+abstract class BaseKeyEventDelegate {
+    val keyEventActionMap = SparseArrayCompat<KeyEventAction>()
 }

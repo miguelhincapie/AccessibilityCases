@@ -34,7 +34,7 @@ class CarouselElementDelegateAdapter(private val listener: OnCarouselElementList
             carouselElementViewType: CarouselElementViewType,
             listener: OnCarouselElementListener
         ) {
-            itemView.title.text = carouselElementViewType.carouselElement.value
+            itemView.accessibility_state.text = carouselElementViewType.carouselElement.value
             itemView.setOnClickListener { listener.onCarouselElementClicked(carouselElementViewType.carouselElement) }
         }
     }
