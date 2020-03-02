@@ -24,8 +24,6 @@ import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackV
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
-const val NUMBER_OF_COLUMNS = 3
-
 class MainActivity : AppCompatActivity(),
     GridElementDelegateAdapter.OnGridElementListener,
     CarouselElementDelegateAdapter.OnCarouselElementListener {
@@ -71,12 +69,12 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun populateDummyGridData() = mutableListOf<RecyclerViewType>().apply {
-        for (index in 0..10) {
+        for (index in 0..AMOUNT_OF_DUMMY_DATA) {
             add(
                 GridElementViewType(
                     GridElement(
                         index,
-                        "Element ${index + 1}"
+                        getString(R.string.dummy_data_prefix, index + 1)
                     )
                 )
             )
@@ -84,12 +82,12 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun populateDummyCarouselData() = mutableListOf<RecyclerViewType>().apply {
-        for (index in 0..10) {
+        for (index in 0..AMOUNT_OF_DUMMY_DATA) {
             add(
                 CarouselElementViewType(
                     CarouselElement(
                         index,
-                        "Element ${index + 1}"
+                        getString(R.string.dummy_data_prefix, index + 1)
                     )
                 )
             )
@@ -97,8 +95,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun onTalkBackStateChanged(isOn: Boolean) {
-        if (isOn) accessibility_state.text = "ASDF"
-        else accessibility_state.text = "QWERT"
+        if (isOn) accessibility_state.text = getString(R.string.accessibility_state_on)
+        else accessibility_state.text = getString(R.string.accessibility_state_off)
     }
 
     override fun onGridElementClicked(gridElement: GridElement) {
@@ -106,7 +104,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onCarouselElementClicked(carouselElement: CarouselElement) {
-        Toast.makeText(applicationContext, "${carouselElement.value} pressed", Toast.LENGTH_SHORT)
+        Toast.makeText(applicationContext, getString(R.string.carousel_element_pressed_suffix, carouselElement.value), Toast.LENGTH_SHORT)
             .show()
     }
 
@@ -116,5 +114,10 @@ class MainActivity : AppCompatActivity(),
                 KeyEventHandler.handleEvent(focusView, it)
             }
         } ?: super.dispatchKeyEvent(event)
+    }
+
+    companion object {
+        const val NUMBER_OF_COLUMNS = 3
+        const val AMOUNT_OF_DUMMY_DATA = 10
     }
 }

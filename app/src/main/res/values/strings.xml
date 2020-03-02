@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AccessibilityCases</string>
+    <string name="dummy_data_prefix">Element %1$d</string>
+    <string name="carousel_element_pressed_suffix">%1$s pressed</string>
+    <string name="accessibility_state_on">TalkBack ON</string>
+    <string name="accessibility_state_off">TalkBack OFF</string>
 </resources>

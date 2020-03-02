@@ -34,14 +34,16 @@ object KeyEventHandler {
         }
     }
 
-    fun handleEvent(view: View, event: KeyEvent): Boolean {
+    fun handleEvent(view: View, event: KeyEvent): Boolean? {
         val key =
-            if (KEYCODE_CHANGE_ACCESSIBILITY_STATE == event.keyCode) KEYCODE_CHANGE_ACCESSIBILITY_STATE
-            else createKey(view.id, event.keyCode, event.action)
+            if (KEYCODE_CHANGE_ACCESSIBILITY_STATE == event.keyCode && KeyEvent.ACTION_DOWN == event.action)
+                KEYCODE_CHANGE_ACCESSIBILITY_STATE
+            else
+                createKey(view.id, event.keyCode, event.action)
 
         return if (key != KEYCODE_CHANGE_ACCESSIBILITY_STATE && !TalkBackFacade.isTalkBackEnabled())
-            false
+            null
         else
-            keyEventActionMap.get(key)?.invoke(view) ?: false
+            keyEventActionMap.get(key)?.invoke(view)
     }
 }

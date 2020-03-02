@@ -4,5 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class TalkBackViewModel: ViewModel() {
-    val talkBackState = MutableLiveData<Boolean>()
+    val talkBackState = TalkBackState
 }
+
+object TalkBackState : MutableLiveData<Boolean>()

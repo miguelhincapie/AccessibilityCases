@@ -5,6 +5,7 @@ import android.provider.Settings
 import android.util.Log
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.intValue
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.toBoolean
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackState
 import java.lang.ref.WeakReference
 
 const val TALK_BACK_SERVICE_NAME = "com.google.android.marvin.talkback/.TalkBackService"
@@ -35,6 +36,7 @@ object TalkBackFacade {
                 Settings.Secure.ACCESSIBILITY_ENABLED,
                 enable.intValue().toString()
             )
+            TalkBackState.value = enable
             true
         } catch (e: SecurityException) {
             Log.e("AccessibilityHelper", e.message.toString())
