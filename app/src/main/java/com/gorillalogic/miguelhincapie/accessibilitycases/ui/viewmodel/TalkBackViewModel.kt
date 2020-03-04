@@ -5,8 +5,11 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.KeyEventHandler
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.TalkBackFacade
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate.CarouselKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate.GeneralKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate.GridKeyEventDelegate
+import com.gorillalogic.miguelhincapie.domain.accessibility.KeyEventHandler
+import com.gorillalogic.miguelhincapie.domain.accessibility.TalkBackFacade
 import java.lang.ref.WeakReference
 
 class TalkBackViewModel(
@@ -16,6 +19,9 @@ class TalkBackViewModel(
 
     init {
         TalkBackState.value = talkBackFacade.isTalkBackEnabled()
+        keyEventHandler.addKeyEventDelegate(GeneralKeyEventDelegate())
+        keyEventHandler.addKeyEventDelegate(GridKeyEventDelegate())
+        keyEventHandler.addKeyEventDelegate(CarouselKeyEventDelegate())
     }
 
     fun dispatchKeyEvent(event: KeyEvent, currentFocusWR: WeakReference<View>): Boolean? {

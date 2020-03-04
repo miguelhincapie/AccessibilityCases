@@ -3,7 +3,7 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.GridElement
+import com.gorillalogic.miguelhincapie.domain.entities.GridElement
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.DelegateAdapter
 import kotlinx.android.synthetic.main.grid_element_item.view.*

@@ -3,7 +3,7 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.carousel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.CarouselElement
+import com.gorillalogic.miguelhincapie.domain.entities.CarouselElement
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.DelegateAdapter
 import kotlinx.android.synthetic.main.carousel_element_item.view.*

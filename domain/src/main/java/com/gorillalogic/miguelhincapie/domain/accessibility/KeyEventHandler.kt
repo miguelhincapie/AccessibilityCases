@@ -1,12 +1,10 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility
+package com.gorillalogic.miguelhincapie.domain.accessibility
 
 import android.view.KeyEvent
 import android.view.View
 import androidx.collection.SparseArrayCompat
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.delegate.CarouselKeyEventDelegate
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.delegate.GeneralKeyEventDelegate
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.delegate.GridKeyEventDelegate
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 const val KEYCODE_CHANGE_ACCESSIBILITY_STATE = KeyEvent.KEYCODE_S
 
@@ -21,16 +19,12 @@ fun createKey(focusedViewId: Int, keyCode: Int, action: Int): Int {
     return result
 }
 
-class KeyEventHandler {
+class KeyEventHandler @Inject constructor() {
 
     private var keyEventActionMap = SparseArrayCompat<KeyEventAction>()
 
-    init {
-        keyEventActionMap.apply {
-            putAll(GeneralKeyEventDelegate().keyEventActionMap)
-            putAll(GridKeyEventDelegate().keyEventActionMap)
-            putAll(CarouselKeyEventDelegate().keyEventActionMap)
-        }
+    fun addKeyEventDelegate(keyEventDelegateImpl: BaseKeyEventDelegate) {
+        keyEventActionMap.putAll(keyEventDelegateImpl.keyEventActionMap)
     }
 
     fun switchAccessibilityKeyPressed(event: KeyEvent) =

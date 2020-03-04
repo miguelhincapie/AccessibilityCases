@@ -1,4 +1,4 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.ui
+package com.gorillalogic.miguelhincapie.accessibilitycases.ui.util
 
 import android.widget.Button
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackState
@@ -28,7 +28,3 @@ fun Button.enable() {
         isEnabled = true
     }
 }
-
-
-fun Int.toBoolean() = this == 1
-fun Boolean.intValue() = if (this) 1 else 0

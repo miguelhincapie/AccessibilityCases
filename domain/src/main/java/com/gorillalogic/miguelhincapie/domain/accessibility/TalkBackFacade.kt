@@ -1,16 +1,17 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility
+package com.gorillalogic.miguelhincapie.domain.accessibility
 
 import android.content.Context
 import android.provider.Settings
 import android.util.Log
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.intValue
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.toBoolean
+import com.gorillalogic.miguelhincapie.domain.util.intValue
+import com.gorillalogic.miguelhincapie.domain.util.toBoolean
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 private const val TALK_BACK_SERVICE_NAME = "com.google.android.marvin.talkback/.TalkBackService"
 private const val TALK_BACK_SERVICE_NAME_DISABLED = ""
 
-class TalkBackFacade(private val contextWeakReference: WeakReference<Context>) {
+class TalkBackFacade @Inject constructor(private val contextWeakReference: WeakReference<Context>) {
 
     /**
      * @return the state of the service: <code>true</code> if it's ON, <code>false</code> otherwise.

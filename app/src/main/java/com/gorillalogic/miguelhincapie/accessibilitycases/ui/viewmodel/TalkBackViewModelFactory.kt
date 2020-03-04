@@ -2,8 +2,8 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.KeyEventHandler
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.TalkBackFacade
+import com.gorillalogic.miguelhincapie.domain.accessibility.KeyEventHandler
+import com.gorillalogic.miguelhincapie.domain.accessibility.TalkBackFacade
 
 class TalkBackViewModelFactory(
     private val keyEventHandler: KeyEventHandler,

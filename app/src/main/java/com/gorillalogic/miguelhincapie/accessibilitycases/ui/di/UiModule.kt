@@ -1,8 +1,8 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.ui.di
 
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.KeyEventHandler
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.TalkBackFacade
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModelFactory
+import com.gorillalogic.miguelhincapie.domain.accessibility.KeyEventHandler
+import com.gorillalogic.miguelhincapie.domain.accessibility.TalkBackFacade
 import dagger.Module
 import dagger.Provides
 

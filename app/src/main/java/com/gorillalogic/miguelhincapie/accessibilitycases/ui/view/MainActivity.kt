@@ -8,8 +8,8 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.CarouselElement
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.GridElement
+import com.gorillalogic.miguelhincapie.domain.entities.CarouselElement
+import com.gorillalogic.miguelhincapie.domain.entities.GridElement
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.RecyclerViewType
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.carousel.CarouselAdapter
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.carousel.CarouselElementDelegateAdapter

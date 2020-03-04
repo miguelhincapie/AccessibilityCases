@@ -1,4 +1,4 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility
+package com.gorillalogic.miguelhincapie.domain.accessibility
 
 import android.view.View
 import androidx.collection.SparseArrayCompat

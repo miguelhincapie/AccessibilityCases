@@ -1,6 +1,6 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.carousel
 
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.CarouselElement
+import com.gorillalogic.miguelhincapie.domain.entities.CarouselElement
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.RecyclerViewType
 
 class CarouselElementViewType(val carouselElement: CarouselElement) :

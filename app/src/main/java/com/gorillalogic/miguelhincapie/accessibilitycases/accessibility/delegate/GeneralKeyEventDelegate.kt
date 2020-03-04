@@ -1,37 +1,61 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.delegate
+package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate
 
 import android.view.KeyEvent.*
 import android.view.View
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.BaseKeyEventDelegate
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.createKey
+import com.gorillalogic.miguelhincapie.domain.accessibility.BaseKeyEventDelegate
+import com.gorillalogic.miguelhincapie.domain.accessibility.createKey
 
 class GeneralKeyEventDelegate : BaseKeyEventDelegate() {
 
     init {
         keyEventActionMap.let {
             it.put(
-                createKey(R.id.accessibility_state, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                createKey(
+                    R.id.accessibility_state,
+                    KEYCODE_DPAD_DOWN,
+                    ACTION_DOWN
+                ),
                 this::consumeDownKeyOnTitle
             )
             it.put(
-                createKey(R.id.button1, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                createKey(
+                    R.id.button1,
+                    KEYCODE_DPAD_DOWN,
+                    ACTION_DOWN
+                ),
                 this::consumeDownKeyOnButton1
             )
             it.put(
-                createKey(R.id.button2, KEYCODE_DPAD_DOWN, ACTION_DOWN),
+                createKey(
+                    R.id.button2,
+                    KEYCODE_DPAD_DOWN,
+                    ACTION_DOWN
+                ),
                 this::consumeDownKeyOnButton2
             )
             it.put(
-                createKey(R.id.button1, KEYCODE_DPAD_UP, ACTION_DOWN),
+                createKey(
+                    R.id.button1,
+                    KEYCODE_DPAD_UP,
+                    ACTION_DOWN
+                ),
                 this::consumeUpKeyOnButton1
             )
             it.put(
-                createKey(R.id.button2, KEYCODE_DPAD_UP, ACTION_DOWN),
+                createKey(
+                    R.id.button2,
+                    KEYCODE_DPAD_UP,
+                    ACTION_DOWN
+                ),
                 this::consumeUpKeyOnButton2
             )
             it.put(
-                createKey(R.id.button3, KEYCODE_DPAD_UP, ACTION_DOWN),
+                createKey(
+                    R.id.button3,
+                    KEYCODE_DPAD_UP,
+                    ACTION_DOWN
+                ),
                 this::consumeUpKeyOnButton3
             )
         }
