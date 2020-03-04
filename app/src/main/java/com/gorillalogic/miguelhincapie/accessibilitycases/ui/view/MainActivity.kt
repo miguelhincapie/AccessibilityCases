@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
-import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.KeyEventHandler
-import com.gorillalogic.miguelhincapie.accessibilitycases.domain.TalkBackFacade
 import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.CarouselElement
 import com.gorillalogic.miguelhincapie.accessibilitycases.domain.entities.GridElement
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.RecyclerViewType
@@ -21,22 +18,26 @@ import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridAd
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridElementDelegateAdapter
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridElementViewType
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModel
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModelFactory
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : DaggerAppCompatActivity(),
     GridElementDelegateAdapter.OnGridElementListener,
     CarouselElementDelegateAdapter.OnCarouselElementListener {
 
     private lateinit var gridAdapter: GridAdapter
     private lateinit var carouselAdapter: CarouselAdapter
-    private val talkBackViewModel: TalkBackViewModel by viewModels()
+
+    @Inject
+    internal lateinit var talkBackViewModelFactory: TalkBackViewModelFactory
+    private val talkBackViewModel: TalkBackViewModel by viewModels { talkBackViewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        initDependencies()
 
         gridAdapter =
             GridAdapter(
@@ -61,11 +62,7 @@ class MainActivity : AppCompatActivity(),
         }
         carouselAdapter.setElements(populateDummyCarouselData())
 
-        talkBackViewModel.talkBackState.observe(this) { onTalkBackStateChanged(it) }
-    }
-
-    private fun initDependencies() {
-        TalkBackFacade.contextWeakReference = WeakReference(applicationContext)
+        talkBackViewModel.talkBackStateLiveData().observe(this) { onTalkBackStateChanged(it) }
     }
 
     private fun populateDummyGridData() = mutableListOf<RecyclerViewType>().apply {
@@ -104,14 +101,17 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onCarouselElementClicked(carouselElement: CarouselElement) {
-        Toast.makeText(applicationContext, getString(R.string.carousel_element_pressed_suffix, carouselElement.value), Toast.LENGTH_SHORT)
-            .show()
+        Toast.makeText(
+            applicationContext,
+            getString(R.string.carousel_element_pressed_suffix, carouselElement.value),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         return event?.let {
             currentFocus?.let { focusView ->
-                KeyEventHandler.handleEvent(focusView, it)
+                talkBackViewModel.dispatchKeyEvent(it, WeakReference(focusView))
             }
         } ?: super.dispatchKeyEvent(event)
     }

@@ -1,25 +1,33 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.domain
+package com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility
 
 import android.content.Context
 import android.provider.Settings
 import android.util.Log
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.intValue
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.toBoolean
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackState
 import java.lang.ref.WeakReference
 
-const val TALK_BACK_SERVICE_NAME = "com.google.android.marvin.talkback/.TalkBackService"
-const val TALK_BACK_SERVICE_NAME_DISABLED = ""
+private const val TALK_BACK_SERVICE_NAME = "com.google.android.marvin.talkback/.TalkBackService"
+private const val TALK_BACK_SERVICE_NAME_DISABLED = ""
 
-object TalkBackFacade {
+class TalkBackFacade(private val contextWeakReference: WeakReference<Context>) {
 
-    lateinit var contextWeakReference: WeakReference<Context>
+    /**
+     * @return the state of the service: <code>true</code> if it's ON, <code>false</code> otherwise.
+     */
+    fun switchTalkBackState() = if (isTalkBackEnabled()) !disableTalkBack() else enableTalkBack()
 
     fun isTalkBackEnabled() = Settings.Secure.getString(
         contextWeakReference.get()?.contentResolver,
         Settings.Secure.ACCESSIBILITY_ENABLED
     )?.toInt()?.toBoolean()
         ?: false
+
+    private fun enableTalkBack() =
+        changeAccessibilityServicesState(true, TALK_BACK_SERVICE_NAME)
+
+    private fun disableTalkBack() =
+        changeAccessibilityServicesState(false, TALK_BACK_SERVICE_NAME_DISABLED)
 
     private fun changeAccessibilityServicesState(
         enable: Boolean,
@@ -36,21 +44,10 @@ object TalkBackFacade {
                 Settings.Secure.ACCESSIBILITY_ENABLED,
                 enable.intValue().toString()
             )
-            TalkBackState.value = enable
             true
         } catch (e: SecurityException) {
             Log.e("AccessibilityHelper", e.message.toString())
             false
         }
     }
-
-    fun enableTalkBack(): Boolean = if (!isTalkBackEnabled()) changeAccessibilityServicesState(
-        true,
-        TALK_BACK_SERVICE_NAME
-    ) else false
-
-    fun disableTalkBack(): Boolean = if (isTalkBackEnabled()) changeAccessibilityServicesState(
-        false,
-        TALK_BACK_SERVICE_NAME_DISABLED
-    ) else false
 }

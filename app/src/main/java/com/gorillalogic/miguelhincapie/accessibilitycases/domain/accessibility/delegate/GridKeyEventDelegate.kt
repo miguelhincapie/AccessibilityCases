@@ -1,10 +1,10 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegate
+package com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.delegate
 
 import android.view.KeyEvent.*
 import android.view.View
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
-import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.BaseKeyEventDelegate
-import com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.createKey
+import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.BaseKeyEventDelegate
+import com.gorillalogic.miguelhincapie.accessibilitycases.domain.accessibility.createKey
 
 class GridKeyEventDelegate : BaseKeyEventDelegate() {
 
