@@ -24,11 +24,9 @@ class TalkBackFacade @Inject constructor(private val contextWeakReference: WeakR
     )?.toInt()?.toBoolean()
         ?: false
 
-    private fun enableTalkBack() =
-        changeAccessibilityServicesState(true, TALK_BACK_SERVICE_NAME)
+    fun enableTalkBack() = changeAccessibilityServicesState(true, TALK_BACK_SERVICE_NAME)
 
-    private fun disableTalkBack() =
-        changeAccessibilityServicesState(false, TALK_BACK_SERVICE_NAME_DISABLED)
+    fun disableTalkBack() = changeAccessibilityServicesState(false, TALK_BACK_SERVICE_NAME_DISABLED)
 
     private fun changeAccessibilityServicesState(
         enable: Boolean,

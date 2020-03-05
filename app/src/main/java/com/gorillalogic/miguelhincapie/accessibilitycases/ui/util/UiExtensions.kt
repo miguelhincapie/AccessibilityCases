@@ -1,5 +1,6 @@
 package com.gorillalogic.miguelhincapie.accessibilitycases.ui.util
 
+import android.view.View
 import android.widget.Button
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackState
 
@@ -27,4 +28,30 @@ fun Button.enable() {
     } else {
         isEnabled = true
     }
+}
+
+/**
+ * Extension function to set touch values for accessibility
+ */
+fun List<View>.enableAccessibilityFocus() {
+    this.forEach {
+        it.setAccessibilityFocus()
+    }
+}
+
+/**
+ * Extension function to remove touch values for accessibility
+ */
+fun List<View>.disableAccessibilityFocus() {
+    this.forEach {
+        it.setAccessibilityFocus(false)
+    }
+}
+
+/**
+ * Extension function to set touch/remove values for accessibility depends on params value
+ */
+fun View.setAccessibilityFocus(value: Boolean = true) {
+    this.isFocusable = value
+    this.isFocusableInTouchMode = value
 }

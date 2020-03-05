@@ -24,6 +24,14 @@ class TalkBackViewModel(
         keyEventHandler.addKeyEventDelegate(CarouselKeyEventDelegate())
     }
 
+    fun enableTalkBack() {
+        if (!talkBackFacade.isTalkBackEnabled()) talkBackFacade.enableTalkBack()
+    }
+
+    fun disableTalkBack() {
+        if (talkBackFacade.isTalkBackEnabled()) talkBackFacade.disableTalkBack()
+    }
+
     fun dispatchKeyEvent(event: KeyEvent, currentFocusWR: WeakReference<View>): Boolean? {
         return when {
             keyEventHandler.switchAccessibilityKeyPressed(event) -> {
@@ -38,4 +46,4 @@ class TalkBackViewModel(
     fun talkBackStateLiveData(): LiveData<Boolean> = TalkBackState
 }
 
-object TalkBackState: MutableLiveData<Boolean>()
+object TalkBackState : MutableLiveData<Boolean>()
