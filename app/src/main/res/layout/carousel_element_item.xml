@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/carousel_element_item"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
+    android:layout_width="@dimen/carousel_element_container_size"
+    android:layout_height="@dimen/carousel_element_container_size"
     android:importantForAccessibility="yes">
 
     <TextView
         android:id="@+id/accessibility_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carousel Title"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

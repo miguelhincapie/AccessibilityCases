@@ -4,4 +4,6 @@
     <string name="carousel_element_pressed_suffix">%1$s pressed</string>
     <string name="accessibility_state_on">TalkBack ON</string>
     <string name="accessibility_state_off">TalkBack OFF</string>
+    <string name="turn_on_accessibility_label">Turn On Accessibility</string>
+    <string name="turn_off_accessibility_label">Turn OFF Accessibility</string>
 </resources>

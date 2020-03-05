@@ -10,7 +10,7 @@
         android:id="@+id/accessibility_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/general_margin"
         android:importantForAccessibility="yes"
         android:text="@string/accessibility_state_off"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,9 +20,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridRV"
-        android:layout_width="409dp"
-        android:layout_height="309dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="@dimen/grid_width"
+        android:layout_height="@dimen/grid_height"
+        android:layout_marginTop="@dimen/general_margin"
         android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -32,8 +32,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carouselRV"
-        android:layout_width="409dp"
-        android:layout_height="176dp"
+        android:layout_width="@dimen/carousel_width"
+        android:layout_height="@dimen/carousel_height"
         android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,35 +41,27 @@
         tools:listitem="@layout/carousel_element_item" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button_turn_on"
         style="@style/RoundButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Button"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:text="@string/turn_on_accessibility_label"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_turn_off"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_turn_off"
         style="@style/RoundButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Button 2"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:text="@string/turn_off_accessibility_label"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button3"
-        app:layout_constraintStart_toEndOf="@id/button1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_turn_on" />
 
-    <Button
-        android:id="@+id/button3"
-        style="@style/RoundButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Button 3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
