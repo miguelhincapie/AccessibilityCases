@@ -2,7 +2,7 @@
 <resources>
     <dimen name="general_margin">24dp</dimen>
     <dimen name="button_padding">10dp</dimen>
-    <dimen name="grid_element_container_height">40dp</dimen>
+    <dimen name="grid_element_container_height">90dp</dimen>
     <dimen name="carousel_element_container_size">80dp</dimen>
     <dimen name="grid_width">409dp</dimen>
     <dimen name="grid_height">309dp</dimen>
