@@ -45,5 +45,5 @@ dependencies {
     // Dagger2
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
-    implementation project(path: ':domain')
+    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
 }

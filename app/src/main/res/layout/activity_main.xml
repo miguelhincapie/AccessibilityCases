@@ -12,56 +12,76 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/general_margin"
         android:importantForAccessibility="yes"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:nextFocusDown="@id/button_turn_on"
+        android:nextFocusLeft="@id/accessibility_state"
+        android:nextFocusRight="@id/accessibility_state"
+        android:nextFocusUp="@id/accessibility_state"
         android:text="@string/accessibility_state_off"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Talkback state: OFF" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gridRV"
-        android:layout_width="@dimen/grid_width"
-        android:layout_height="@dimen/grid_height"
-        android:layout_marginTop="@dimen/general_margin"
-        android:importantForAccessibility="no"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/accessibility_state"
-        tools:listitem="@layout/grid_element_item" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/carouselRV"
-        android:layout_width="@dimen/carousel_width"
-        android:layout_height="@dimen/carousel_height"
-        android:importantForAccessibility="no"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridRV"
-        tools:listitem="@layout/carousel_element_item" />
+        tools:text="TalkBack state: OFF" />
 
     <Button
         android:id="@+id/button_turn_on"
         style="@style/RoundButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginTop="@dimen/general_margin"
+        android:nextFocusUp="@id/accessibility_state"
+        android:nextFocusDown="@id/button_turn_off"
+        android:nextFocusRight="@id/button_turn_on"
         android:text="@string/turn_on_accessibility_label"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_turn_off"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accessibility_state" />
 
     <Button
         android:id="@+id/button_turn_off"
         style="@style/RoundButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginTop="@dimen/general_margin"
+        android:nextFocusDown="@id/textView"
+        android:nextFocusUp="@id/button_turn_on"
+        android:nextFocusLeft="@id/button_turn_off"
         android:text="@string/turn_off_accessibility_label"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_turn_on" />
+        app:layout_constraintStart_toEndOf="@+id/button_turn_on"
+        app:layout_constraintTop_toBottomOf="@+id/accessibility_state" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:focusable="true"
+        android:nextFocusUp="@id/button_turn_off"
+        android:nextFocusDown="@id/button_send_focus"
+        android:text="@string/guide_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_turn_on" />
+
+    <Button
+        android:id="@+id/button_send_focus"
+        style="@style/RoundButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_margin"
+        android:nextFocusRight="@id/button_send_focus"
+        android:nextFocusLeft="@id/button_send_focus"
+        android:nextFocusUp="@id/textView"
+        android:nextFocusDown="@id/button_send_focus"
+        android:text="@string/send_focus_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

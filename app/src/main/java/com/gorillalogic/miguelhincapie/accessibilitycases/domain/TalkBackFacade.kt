@@ -1,10 +1,10 @@
-package com.gorillalogic.miguelhincapie.domain.accessibility
+package com.gorillalogic.miguelhincapie.accessibilitycases.domain
 
 import android.content.Context
 import android.provider.Settings
 import android.util.Log
-import com.gorillalogic.miguelhincapie.domain.util.intValue
-import com.gorillalogic.miguelhincapie.domain.util.toBoolean
+import com.gorillalogic.miguelhincapie.accessibilitycases.domain.util.intValue
+import com.gorillalogic.miguelhincapie.accessibilitycases.domain.util.toBoolean
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 
@@ -24,9 +24,13 @@ class TalkBackFacade @Inject constructor(private val contextWeakReference: WeakR
     )?.toInt()?.toBoolean()
         ?: false
 
-    fun enableTalkBack() = changeAccessibilityServicesState(true, TALK_BACK_SERVICE_NAME)
+    fun enableTalkBack() = changeAccessibilityServicesState(true,
+        TALK_BACK_SERVICE_NAME
+    )
 
-    fun disableTalkBack() = changeAccessibilityServicesState(false, TALK_BACK_SERVICE_NAME_DISABLED)
+    fun disableTalkBack() = changeAccessibilityServicesState(false,
+        TALK_BACK_SERVICE_NAME_DISABLED
+    )
 
     private fun changeAccessibilityServicesState(
         enable: Boolean,

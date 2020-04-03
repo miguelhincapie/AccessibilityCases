@@ -4,6 +4,9 @@
     <string name="carousel_element_pressed_suffix">%1$s pressed</string>
     <string name="accessibility_state_on">TalkBack ON</string>
     <string name="accessibility_state_off">TalkBack OFF</string>
-    <string name="turn_on_accessibility_label">Turn On Accessibility</string>
+    <string name="turn_on_accessibility_label">Turn ON Accessibility</string>
     <string name="turn_off_accessibility_label">Turn OFF Accessibility</string>
+    <string name="guide_text">This Fragment contains 5 elements inside the ConstraintLayout, each one has basic accessibility attributes set in order to be able to navigate using an accessibility service.
+        Notice that after turn ON TalkBack, you can navigate through the elements using TalkBack gestures (swipe right and left) or use UP and DOWN arrows in your keyboard.</string>
+    <string name="send_focus_label">Send focus to Title</string>
 </resources>
