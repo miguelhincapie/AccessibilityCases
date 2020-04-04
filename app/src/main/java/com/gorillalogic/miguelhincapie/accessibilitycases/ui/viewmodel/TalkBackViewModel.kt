@@ -43,11 +43,11 @@ class TalkBackViewModel(
     }
 
     fun enableTalkBack() {
-        if (!talkBackFacade.isTalkBackEnabled()) talkBackFacade.enableTalkBack()
+        TalkBackState.value = if (!talkBackFacade.isTalkBackEnabled()) talkBackFacade.enableTalkBack() else true
     }
 
     fun disableTalkBack() {
-        if (talkBackFacade.isTalkBackEnabled()) talkBackFacade.disableTalkBack()
+        TalkBackState.value = if (talkBackFacade.isTalkBackEnabled()) !talkBackFacade.disableTalkBack() else false
     }
 
     fun dispatchKeyEvent(event: KeyEvent, currentFocusWR: WeakReference<View>): Boolean? {
