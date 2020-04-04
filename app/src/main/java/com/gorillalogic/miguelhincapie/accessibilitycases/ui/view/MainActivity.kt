@@ -19,8 +19,10 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.ui.view
  * https://www.linkedin.com/in/miguelhincapie/
  */
 
+import android.content.Context
 import android.os.Bundle
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
@@ -47,6 +49,9 @@ class MainActivity : DaggerAppCompatActivity() {
         button_send_focus.setOnClickListener { sendFocusToTitle() }
     }
 
+    /**
+     * With this function we are observing a specific accessibility service started/stopped: TalkBack
+     */
     private fun onTalkBackStateChanged(isOn: Boolean) {
         if (isOn) {
             accessibility_state.text = getString(R.string.accessibility_state_on)
@@ -56,10 +61,15 @@ class MainActivity : DaggerAppCompatActivity() {
         }
     }
 
-    private fun sendFocusToTitle() {
-        with(accessibility_state) {
-            requestFocus()
-            sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+    /**
+     * Observe for any accessibility service state change. Use [AccessibilityManager] to list
+     * current accessibility service ON or send [AccessibilityEvent] like a speech out.
+     */
+    private fun listenForAccessibilityServiceStatus(context: Context) {
+        val accessibilityManager =
+            context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+        accessibilityManager.addAccessibilityStateChangeListener { enabled ->
+            // Do your stuff
         }
     }
 
@@ -68,6 +78,12 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun onTurnOFFButtonPressed() {
+        accessibility_state.clearFocus()
         talkBackViewModel.disableTalkBack()
+    }
+
+    private fun sendFocusToTitle() = with(accessibility_state) {
+        requestFocus()
+        sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 }
