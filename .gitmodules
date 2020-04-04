@@ -1,3 +1,6 @@
 [submodule "gist/talk_back_facade_gist"]
 	path = gist/talk_back_facade_gist
 	url = https://gist.github.com/miguelhincapie/c80896756dd857c4bc38bc0db91e3420
+[submodule "gist/accessibility_service_listener_gist"]
+	path = gist/accessibility_service_listener_gist
+	url = https://gist.github.com/miguelhincapie/d5ab4ceefb4bad9ae3f0cf01e9d22ce1
