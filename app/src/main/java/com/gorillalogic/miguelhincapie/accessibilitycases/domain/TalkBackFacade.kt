@@ -31,11 +31,6 @@ private const val TALK_BACK_SERVICE_NAME_DISABLED = ""
 
 class TalkBackFacade @Inject constructor(private val contextWeakReference: WeakReference<Context>) {
 
-    /**
-     * @return the state of the service: <code>true</code> if it's ON, <code>false</code> otherwise.
-     */
-    fun switchTalkBackState() = if (isTalkBackEnabled()) !disableTalkBack() else enableTalkBack()
-
     fun isTalkBackEnabled() = Settings.Secure.getString(
         contextWeakReference.get()?.contentResolver,
         Settings.Secure.ACCESSIBILITY_ENABLED
