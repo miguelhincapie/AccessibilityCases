@@ -1,3 +1,15 @@
 [submodule "gist/talkback_facade_gist"]
 	path = gist/talkback_facade_gist
 	url = https://gist.github.com/miguelhincapieGL/a6065644ed563548cab9c1948e326e94
+[submodule "gist/post_delayed_util"]
+	path = gist/post_delayed_util
+	url = https://gist.github.com/miguelhincapie/ad790873da075d9ed51c1624add2939f
+[submodule "gist/send_focus_after_talk_back_start"]
+	path = gist/send_focus_after_talk_back_start
+	url = https://gist.github.com/miguelhincapie/1735d3aab55abca9502baa19b07eeb72
+[submodule "gist/accessibility_service_listener_gist"]
+	path = gist/accessibility_service_listener_gist
+	url = https://gist.github.com/miguelhincapie/d5ab4ceefb4bad9ae3f0cf01e9d22ce1
+[submodule "gist/talk_back_facade_gist"]
+	path = gist/talk_back_facade_gist
+	url = https://gist.github.com/miguelhincapie/c80896756dd857c4bc38bc0db91e3420
