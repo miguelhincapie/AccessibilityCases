@@ -1,0 +1,46 @@
+class TalkBackFacade @Inject constructor(private val contextWeakReference: WeakReference<Context>) {
+
+    fun isTalkBackEnabled() = Settings.Secure.getString(
+        contextWeakReference.get()?.contentResolver,
+        Settings.Secure.ACCESSIBILITY_ENABLED
+    )?.toInt()?.toBoolean()
+        ?: false
+
+    fun enableTalkBack() = changeAccessibilityServicesState(
+        true,
+        TALK_BACK_SERVICE_NAME
+    )
+
+    fun disableTalkBack() = changeAccessibilityServicesState(
+        false,
+        TALK_BACK_SERVICE_NAME_DISABLED
+    )
+
+    private fun changeAccessibilityServicesState(
+        enable: Boolean,
+        accessibilityServiceName: String
+    ): Boolean {
+        return try {
+            Settings.Secure.putString(
+                contextWeakReference.get()?.contentResolver,
+                Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES,
+                accessibilityServiceName
+            )
+            Settings.Secure.putString(
+                contextWeakReference.get()?.contentResolver,
+                Settings.Secure.ACCESSIBILITY_ENABLED,
+                enable.intValue().toString()
+            )
+            true
+        } catch (e: SecurityException) {
+            Log.e("AccessibilityHelper", e.message.toString())
+            false
+        }
+    }
+}
+// Consants and ext functions moved here for easily access
+private const val TALK_BACK_SERVICE_NAME = "com.google.android.marvin.talkback/.TalkBackService"
+private const val TALK_BACK_SERVICE_NAME_DISABLED = ""
+
+fun Int.toBoolean() = this == 1
+fun Boolean.intValue() = if (this) 1 else 0
