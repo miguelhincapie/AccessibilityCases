@@ -9,8 +9,8 @@ MVVM with accessibility interaction.<br>
 
 
 ### Branches
-* hello_accessibility
-* master
+* hello_accessibility: used to explain basic accessibility xml attributes.
+* master: contains almost all edge cases explained in section 2 of <medium post>
 
 ### Libraries
 * Dagger2
