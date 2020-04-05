@@ -1,6 +1,6 @@
 # Accessibility Cases on Android
-This is the repository for <this medium post>
-There are different kind of accessibility services that you can implement depends on your app's needs. I summarized them and a bunch of programming edge cases that I have had to face in multiple projects… almost all of them made me scream at least once.
+This is the repository for this medium post.<br>
+Working with android accessibility you usually have to face some annoying behaviors. I summarized the solutions (edge cases) in this simple app.
 <br><br>
 <img width="300" src="https://github.com/miguelhincapie/AccessibilityCases/blob/master/docs/diagrams/mainview.png">  
 ### architecture
