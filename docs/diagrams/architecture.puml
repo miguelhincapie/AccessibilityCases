@@ -1,0 +1,19 @@
+@startuml
+node "UI layer" {
+    rectangle "ui" as ui #DAE8FC
+    rectangle "view model" as viewmodel #D5E8D4
+    rectangle "accessibility Impl" as accUI #D5E8D4
+}
+
+node "Domain layer" as domainlayer {
+    rectangle "accessibility Interface" as accDomain #FFE6CC
+    rectangle "KeyEventHandler" as keyEventHandler #FFE6CC
+    rectangle "entities" as entities #FFF2CC
+}
+
+ui --> viewmodel
+viewmodel --> keyEventHandler
+keyEventHandler --> entities
+accUI -left-> viewmodel
+keyEventHandler -right-> accDomain
+@enduml

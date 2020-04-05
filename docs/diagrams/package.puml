@@ -1,0 +1,15 @@
+@startwbs
++ AccessibilityCases
+ + app
+  + di
+  + accessibility
+   + delegate
+  + ui
+  + viewmodel
+  + utils
+ + domain
+  + di
+  + entities
+  + accessibility
+  + usecase #red
+@endwbs
