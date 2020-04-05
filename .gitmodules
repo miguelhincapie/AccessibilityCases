@@ -13,3 +13,6 @@
 [submodule "gist/talk_back_facade_gist"]
 	path = gist/talk_back_facade_gist
 	url = https://gist.github.com/miguelhincapie/c80896756dd857c4bc38bc0db91e3420
+[submodule "gist/button_enabled_disabled_ext_fun_gist"]
+	path = gist/button_enabled_disabled_ext_fun_gist
+	url = https://gist.github.com/miguelhincapie/ea2a9b0079148ba55882ff363f3e89e7
