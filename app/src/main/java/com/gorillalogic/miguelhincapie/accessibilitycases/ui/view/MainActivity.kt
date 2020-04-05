@@ -36,8 +36,8 @@ import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridEl
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.disable
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.enable
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.enableAccessibilityFocus
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModel
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModelFactory
+import com.gorillalogic.miguelhincapie.accessibilitycases.viewmodel.TalkBackViewModel
+import com.gorillalogic.miguelhincapie.accessibilitycases.viewmodel.TalkBackViewModelFactory
 import com.gorillalogic.miguelhincapie.domain.entities.CarouselElement
 import com.gorillalogic.miguelhincapie.domain.entities.GridElement
 import dagger.android.support.DaggerAppCompatActivity

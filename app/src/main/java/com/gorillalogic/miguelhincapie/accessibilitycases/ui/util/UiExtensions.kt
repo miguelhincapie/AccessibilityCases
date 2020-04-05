@@ -23,7 +23,7 @@ import android.widget.Button
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackState
+import com.gorillalogic.miguelhincapie.accessibilitycases.viewmodel.TalkBackState
 
 /**
  * Extension function to disable a Button.

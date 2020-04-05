@@ -1,4 +1,4 @@
-package com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel
+package com.gorillalogic.miguelhincapie.accessibilitycases.viewmodel
 
 /**
  * Copyright 2020 [Miguel Hincapie C]

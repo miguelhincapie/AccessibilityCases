@@ -18,7 +18,7 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.ui.di
  * https://github.com/miguelhincapie
  * https://www.linkedin.com/in/miguelhincapie/
  */
-import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModelFactory
+import com.gorillalogic.miguelhincapie.accessibilitycases.viewmodel.TalkBackViewModelFactory
 import com.gorillalogic.miguelhincapie.domain.accessibility.KeyEventHandler
 import com.gorillalogic.miguelhincapie.domain.accessibility.TalkBackFacade
 import dagger.Module
