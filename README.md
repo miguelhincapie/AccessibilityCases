@@ -1,6 +1,11 @@
 # Accessibility Cases on Android
-
-### Description
+This is the repository for <this medium post>
+There are different kind of accessibility services that you can implement depends on your app's needs. I summarized them and a bunch of programming edge cases that I have had to face in multiple projects… almost all of them made me scream at least once.
+<br><br>
+<img width="300" src="https://github.com/miguelhincapie/AccessibilityCases/blob/master/docs/diagrams/mainview.png">  
+### architecture
+MVVM with accessibility interaction.<br>
+<img width="400" eight="300" src="https://github.com/miguelhincapie/AccessibilityCases/blob/master/docs/diagrams/architecture.png">
 
 
 ### Branches
