@@ -6,4 +6,8 @@
     <string name="accessibility_state_off">TalkBack OFF</string>
     <string name="turn_on_accessibility_label">Turn On Accessibility</string>
     <string name="turn_off_accessibility_label">Turn OFF Accessibility</string>
+
+    <!--Button enable/disable workaround text-->
+    <string name="button_disabled_accessibility">%s, button, disabled</string>
+    <string name="button_accessibility_label">%s, button, double tap to activate</string>
 </resources>

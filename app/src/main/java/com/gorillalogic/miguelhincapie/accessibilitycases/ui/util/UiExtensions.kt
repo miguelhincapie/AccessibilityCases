@@ -20,29 +20,38 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.ui.util
  */
 import android.view.View
 import android.widget.Button
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackState
 
 /**
+ * Extension function to disable a Button.
  * Workaround due we can't just set enable to false because it will lose focusable ability.
  * Check canTakeFocus() function inside View.java file.
  */
-fun Button.disable() {
+fun Button.disable(@DrawableRes drawableForAccessibility: Int) {
     if (TalkBackState.value == true) {
+        isEnabled = true
         isClickable = false
-        // contentDescription = String.format(context.getString(R.string.button_disabled_accessibility), text)
+        contentDescription = String.format(context.getString(R.string.button_disabled_accessibility), text)
+        background = ContextCompat.getDrawable(context, drawableForAccessibility)
     } else {
         isEnabled = false
     }
 }
 
 /**
+ * Extension function to enable a Button.
  * Workaround due we can't just set enable to false because it will lose focusable ability.
  * Check canTakeFocus() function inside View.java file.
  */
-fun Button.enable() {
+fun Button.enable(@DrawableRes drawableForAccessibility: Int) {
     if (TalkBackState.value == true) {
+        isEnabled = true
         isClickable = true
-        contentDescription = text
+        contentDescription = context.getString(R.string.button_accessibility_label, text)
+        background = ContextCompat.getDrawable(context, drawableForAccessibility)
     } else {
         isEnabled = true
     }
@@ -70,6 +79,6 @@ fun List<View>.disableAccessibilityFocus() {
  * Extension function to set touch/remove values for accessibility depends on params value
  */
 fun View.setAccessibilityFocus(value: Boolean = true) {
-    this.isFocusable = value
     this.isFocusableInTouchMode = value
+    this.isFocusable = value
 }

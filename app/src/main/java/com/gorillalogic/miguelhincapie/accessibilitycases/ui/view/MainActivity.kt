@@ -33,6 +33,9 @@ import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.carousel.Ca
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridAdapter
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridElementDelegateAdapter
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.adapter.grid.GridElementViewType
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.disable
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.enable
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.enableAccessibilityFocus
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModel
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.viewmodel.TalkBackViewModelFactory
 import com.gorillalogic.miguelhincapie.domain.entities.CarouselElement
@@ -83,6 +86,7 @@ class MainActivity : DaggerAppCompatActivity(),
         talkBackViewModel.talkBackStateLiveData().observe(this) { onTalkBackStateChanged(it) }
         button_turn_on.setOnClickListener { onTurnOnButtonPressed() }
         button_turn_off.setOnClickListener { onTurnOFFButtonPressed() }
+        listOf(button_turn_off, button_turn_on).enableAccessibilityFocus()
     }
 
     private fun populateDummyGridData() = mutableListOf<RecyclerViewType>().apply {
@@ -114,6 +118,8 @@ class MainActivity : DaggerAppCompatActivity(),
     private fun onTalkBackStateChanged(isOn: Boolean) {
         if (isOn) {
             accessibility_state.text = getString(R.string.accessibility_state_on)
+            button_turn_on.disable(R.drawable.round_button_disabled)
+            button_turn_off.enable(R.drawable.round_button_enabled)
         } else {
             accessibility_state.text = getString(R.string.accessibility_state_off)
         }
@@ -124,6 +130,8 @@ class MainActivity : DaggerAppCompatActivity(),
     }
 
     private fun onTurnOFFButtonPressed() {
+        button_turn_off.disable(R.drawable.round_button_disabled)
+        button_turn_on.enable(R.drawable.round_button_enabled)
         talkBackViewModel.disableTalkBack()
     }
 
