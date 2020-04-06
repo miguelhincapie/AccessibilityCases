@@ -41,6 +41,7 @@ class CarouselElementDelegateAdapter(private val listener: OnCarouselElementList
 
     override fun onBindViewHolder(viewHolder: ViewHolder, viewType: CarouselElementViewType) {
         viewHolder.bind(viewType, listener)
+        viewHolder.bindAccessibility(viewType)
     }
 
     class ViewHolder(viewGroup: ViewGroup) : RecyclerView.ViewHolder(
@@ -52,8 +53,12 @@ class CarouselElementDelegateAdapter(private val listener: OnCarouselElementList
             carouselElementViewType: CarouselElementViewType,
             listener: OnCarouselElementListener
         ) {
-            itemView.accessibility_state.text = carouselElementViewType.carouselElement.value
+            itemView.carousel_title.text = carouselElementViewType.carouselElement.value
             itemView.setOnClickListener { listener.onCarouselElementClicked(carouselElementViewType.carouselElement) }
+        }
+
+        fun bindAccessibility(carouselElementViewType: CarouselElementViewType) {
+            // Do additional accessibility things
         }
     }
 }

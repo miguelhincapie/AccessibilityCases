@@ -41,6 +41,7 @@ class GridElementDelegateAdapter(private val listener: OnGridElementListener) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, viewType: GridElementViewType) {
         viewHolder.bind(viewType, listener)
+        viewHolder.bindAccessibility(viewType)
     }
 
     class ViewHolder(viewGroup: ViewGroup) : RecyclerView.ViewHolder(
@@ -49,8 +50,12 @@ class GridElementDelegateAdapter(private val listener: OnGridElementListener) :
         )
     ) {
         fun bind(gridElementViewType: GridElementViewType, listener: OnGridElementListener) {
-            itemView.accessibility_state.text = gridElementViewType.gridElement.value
+            itemView.grid_title.text = gridElementViewType.gridElement.value
             itemView.setOnClickListener { listener.onGridElementClicked(gridElementViewType.gridElement) }
+        }
+
+        fun bindAccessibility(gridElementViewType: GridElementViewType) {
+            // Do additional accessibility things
         }
     }
 }
