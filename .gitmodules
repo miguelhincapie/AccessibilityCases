@@ -16,3 +16,9 @@
 [submodule "gist/button_enabled_disabled_ext_fun_gist"]
 	path = gist/button_enabled_disabled_ext_fun_gist
 	url = https://gist.github.com/miguelhincapie/ea2a9b0079148ba55882ff363f3e89e7
+[submodule "gist/delegating_key_event_from_activity_to_viewmodel_gist"]
+	path = gist/delegating_key_event_from_activity_to_viewmodel_gist
+	url = https://gist.github.com/miguelhincapie/8c853af32d0d9ff413ffd827780a5789
+[submodule "gist/key_event_handler_gits"]
+	path = gist/key_event_handler_gits
+	url = https://gist.github.com/miguelhincapie/4223142215a99c90681144a6e5561f23
