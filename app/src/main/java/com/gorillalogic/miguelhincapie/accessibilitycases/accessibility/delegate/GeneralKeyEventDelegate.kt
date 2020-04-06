@@ -20,7 +20,9 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegat
  */
 import android.view.KeyEvent.*
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.sendFocusToFirstElement
 import com.gorillalogic.miguelhincapie.domain.accessibility.BaseKeyEventDelegate
 import com.gorillalogic.miguelhincapie.domain.accessibility.createKey
 
@@ -31,8 +33,7 @@ class GeneralKeyEventDelegate : BaseKeyEventDelegate() {
             it.put(
                 createKey(
                     R.id.accessibility_state,
-                    KEYCODE_DPAD_DOWN,
-                    ACTION_DOWN
+                    KEYCODE_DPAD_DOWN
                 ),
                 this::consumeDownKeyOnTitle
             )
@@ -64,8 +65,8 @@ class GeneralKeyEventDelegate : BaseKeyEventDelegate() {
     }
 
     private fun consumeDownKeyOnTitle(currentFocus: View): Boolean {
-        currentFocus.nextFocusDownId = R.id.gridRV
-        return false
+        currentFocus.rootView.findViewById<RecyclerView>(R.id.gridRV)?.sendFocusToFirstElement()
+        return true
     }
 
     private fun consumeDownKeyOnTurnOnButton(currentFocus: View): Boolean {

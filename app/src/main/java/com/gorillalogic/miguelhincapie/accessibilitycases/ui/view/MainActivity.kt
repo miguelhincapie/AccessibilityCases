@@ -86,7 +86,7 @@ class MainActivity : DaggerAppCompatActivity(),
         talkBackViewModel.talkBackStateLiveData().observe(this) { onTalkBackStateChanged(it) }
         button_turn_on.setOnClickListener { onTurnOnButtonPressed() }
         button_turn_off.setOnClickListener { onTurnOFFButtonPressed() }
-        listOf(button_turn_off, button_turn_on).enableAccessibilityFocus()
+        setAccessibility()
     }
 
     private fun populateDummyGridData() = mutableListOf<RecyclerViewType>().apply {
@@ -153,6 +153,10 @@ class MainActivity : DaggerAppCompatActivity(),
                 talkBackViewModel.dispatchKeyEvent(it, WeakReference(focusView))
             }
         } ?: super.dispatchKeyEvent(event)
+    }
+
+    private fun setAccessibility() {
+        listOf(accessibility_state, button_turn_off, button_turn_on).enableAccessibilityFocus()
     }
 
     companion object {

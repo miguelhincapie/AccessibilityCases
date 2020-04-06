@@ -23,7 +23,6 @@
         android:layout_width="@dimen/grid_width"
         android:layout_height="@dimen/grid_height"
         android:layout_marginTop="@dimen/general_margin"
-        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

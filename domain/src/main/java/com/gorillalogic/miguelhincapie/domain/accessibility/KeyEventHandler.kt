@@ -61,7 +61,7 @@ class KeyEventHandler @Inject constructor() {
  * Note: Prime numbers are chosen to best distribute data among hash buckets, so that's why we are using
  * 31 as value.
  */
-fun createKey(focusedViewId: Int, keyCode: Int, action: Int): Int {
+fun createKey(focusedViewId: Int, keyCode: Int, action: Int = KeyEvent.ACTION_DOWN): Int {
     var result = focusedViewId
     result = 31 * result + keyCode.hashCode()
     result = 31 * result + action.hashCode()

@@ -18,9 +18,11 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegat
  * https://github.com/miguelhincapie
  * https://www.linkedin.com/in/miguelhincapie/
  */
-import android.view.KeyEvent.*
+import android.view.KeyEvent.KEYCODE_DPAD_DOWN
+import android.view.KeyEvent.KEYCODE_DPAD_UP
 import android.view.View
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
+import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.*
 import com.gorillalogic.miguelhincapie.domain.accessibility.BaseKeyEventDelegate
 import com.gorillalogic.miguelhincapie.domain.accessibility.createKey
 
@@ -31,27 +33,40 @@ class GridKeyEventDelegate : BaseKeyEventDelegate() {
             it.put(
                 createKey(
                     R.id.grid_element_item,
-                    KEYCODE_DPAD_DOWN,
-                    ACTION_DOWN
+                    KEYCODE_DPAD_DOWN
                 ),
                 this::onDownKeyPressed
             )
             it.put(
                 createKey(
                     R.id.grid_element_item,
-                    KEYCODE_DPAD_UP,
-                    ACTION_DOWN
+                    KEYCODE_DPAD_UP
                 ),
                 this::onUpKeyPressed
             )
         }
     }
 
-    private fun onDownKeyPressed(currentFocus: View): Boolean {
-        return false
+    private fun onDownKeyPressed(currentFocus: View): Boolean = with(currentFocus) {
+        getNextElementPosition().let { nextElementPosition ->
+            if (isPositionInbound(nextElementPosition)) {
+                sendFocusToListItem(nextElementPosition)
+            } else {
+                rootView.findViewById<View>(R.id.carouselRV)?.sendAccessibilityFocus()
+            }
+        }
+        return true
     }
 
-    private fun onUpKeyPressed(currentFocus: View): Boolean {
-        return false
+    private fun onUpKeyPressed(currentFocus: View): Boolean = with(currentFocus) {
+        getPreviousElementPosition().let { previousElementPosition ->
+            if (isPositionInbound(previousElementPosition)) {
+                sendFocusToListItem(previousElementPosition)
+            } else {
+                rootView.findViewById<View>(R.id.accessibility_state)
+                    ?.sendAccessibilityFocus(View.FOCUS_UP)
+            }
+        }
+        return true
     }
 }
