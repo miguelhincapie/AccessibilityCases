@@ -22,3 +22,9 @@
 [submodule "gist/key_event_handler_gits"]
 	path = gist/key_event_handler_gits
 	url = https://gist.github.com/miguelhincapie/4223142215a99c90681144a6e5561f23
+[submodule "gist/grid_key_event_delegate_gist"]
+	path = gist/grid_key_event_delegate_gist
+	url = https://gist.github.com/miguelhincapie/333cc61ac0d8bc114e4649406401cb6b
+[submodule "gist/ui_ext_fun_focus_gist"]
+	path = gist/ui_ext_fun_focus_gist
+	url = https://gist.github.com/miguelhincapie/f0de6dd92b0b21a2919c0496426e61f8
