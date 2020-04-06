@@ -26,25 +26,23 @@ import javax.inject.Inject
 
 const val KEYCODE_CHANGE_ACCESSIBILITY_STATE = KeyEvent.KEYCODE_S
 
-/**
- * Prime numbers are chosen to best distribute data among hash buckets, so that's why we are using
- * 31 as value.
- */
-fun createKey(focusedViewId: Int, keyCode: Int, action: Int): Int {
-    var result = focusedViewId
-    result = 31 * result + keyCode.hashCode()
-    result = 31 * result + action.hashCode()
-    return result
-}
-
 class KeyEventHandler @Inject constructor() {
 
+    /**
+     * Contains all possible accessibility actions available for the current Activity.
+     */
     private var keyEventActionMap = SparseArrayCompat<KeyEventAction>()
 
     fun addKeyEventDelegate(keyEventDelegateImpl: BaseKeyEventDelegate) {
         keyEventActionMap.putAll(keyEventDelegateImpl.keyEventActionMap)
     }
 
+    /**
+     * If an external keyboard or accessibility device is being used, probably there is a key
+     * associated to turn ON/OFF TalkBack service.
+     * @return <code>true</code> if the key to turn ON/OFF TalkBack was pressed, <code>false</code>
+     * in other case.
+     */
     fun switchAccessibilityKeyPressed(event: KeyEvent) =
         KEYCODE_CHANGE_ACCESSIBILITY_STATE == event.keyCode && KeyEvent.ACTION_DOWN == event.action
 
@@ -55,4 +53,17 @@ class KeyEventHandler @Inject constructor() {
             }
         }
     }
+}
+
+/**
+ * Allows create a unique [Int] value associated to elements given in parameters.
+ *
+ * Note: Prime numbers are chosen to best distribute data among hash buckets, so that's why we are using
+ * 31 as value.
+ */
+fun createKey(focusedViewId: Int, keyCode: Int, action: Int): Int {
+    var result = focusedViewId
+    result = 31 * result + keyCode.hashCode()
+    result = 31 * result + action.hashCode()
+    return result
 }
