@@ -40,26 +40,51 @@ class GeneralKeyEventDelegate : BaseKeyEventDelegate() {
             it.put(
                 createKey(
                     R.id.button_turn_on,
-                    KEYCODE_DPAD_DOWN,
-                    ACTION_DOWN
+                    KEYCODE_DPAD_DOWN
                 ),
                 this::consumeDownKeyOnTurnOnButton
             )
             it.put(
                 createKey(
                     R.id.button_turn_on,
-                    KEYCODE_DPAD_UP,
-                    ACTION_DOWN
+                    KEYCODE_DPAD_UP
                 ),
                 this::consumeUpKeyOnTurnOnButton
             )
             it.put(
                 createKey(
                     R.id.button_turn_off,
-                    KEYCODE_DPAD_UP,
-                    ACTION_DOWN
+                    KEYCODE_DPAD_UP
                 ),
                 this::consumeUpKeyOnTurnOffButton
+            )
+            it.put(
+                createKey(
+                    R.id.button_turn_off,
+                    KEYCODE_DPAD_LEFT
+                ),
+                this::doNothing
+            )
+            it.put(
+                createKey(
+                    R.id.button_turn_off,
+                    KEYCODE_DPAD_RIGHT
+                ),
+                this::doNothing
+            )
+            it.put(
+                createKey(
+                    R.id.button_turn_on,
+                    KEYCODE_DPAD_LEFT
+                ),
+                this::doNothing
+            )
+            it.put(
+                createKey(
+                    R.id.button_turn_on,
+                    KEYCODE_DPAD_RIGHT
+                ),
+                this::doNothing
             )
         }
     }
@@ -75,12 +100,17 @@ class GeneralKeyEventDelegate : BaseKeyEventDelegate() {
     }
 
     private fun consumeUpKeyOnTurnOnButton(currentFocus: View): Boolean {
-        currentFocus.nextFocusUpId = R.id.carouselRV
+        currentFocus.nextFocusUpId = R.id.carousel_container
         return false
     }
 
     private fun consumeUpKeyOnTurnOffButton(currentFocus: View): Boolean {
         currentFocus.nextFocusUpId = R.id.button_turn_on
         return false
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    private fun doNothing(currentFocus: View): Boolean {
+        return true
     }
 }

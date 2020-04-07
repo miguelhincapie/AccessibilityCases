@@ -18,8 +18,7 @@ package com.gorillalogic.miguelhincapie.accessibilitycases.accessibility.delegat
  * https://github.com/miguelhincapie
  * https://www.linkedin.com/in/miguelhincapie/
  */
-import android.view.KeyEvent.KEYCODE_DPAD_DOWN
-import android.view.KeyEvent.KEYCODE_DPAD_UP
+import android.view.KeyEvent.*
 import android.view.View
 import com.gorillalogic.miguelhincapie.accessibilitycases.R
 import com.gorillalogic.miguelhincapie.accessibilitycases.ui.util.*
@@ -35,30 +34,44 @@ class GridKeyEventDelegate : BaseKeyEventDelegate() {
                     R.id.grid_element_item,
                     KEYCODE_DPAD_DOWN
                 ),
-                this::onDownKeyPressed
+                this::consumeDownKeyOnGrid
             )
             it.put(
                 createKey(
                     R.id.grid_element_item,
                     KEYCODE_DPAD_UP
                 ),
-                this::onUpKeyPressed
+                this::consumeUpKeyOnGrid
+            )
+            it.put(
+                createKey(
+                    R.id.grid_element_item,
+                    KEYCODE_DPAD_LEFT
+                ),
+                this::consumeLeftKeyOnGrid
+            )
+            it.put(
+                createKey(
+                    R.id.grid_element_item,
+                    KEYCODE_DPAD_RIGHT
+                ),
+                this::consumeRightKeyOnGrid
             )
         }
     }
 
-    private fun onDownKeyPressed(currentFocus: View): Boolean = with(currentFocus) {
+    private fun consumeDownKeyOnGrid(currentFocus: View): Boolean = with(currentFocus) {
         getNextElementPosition().let { nextElementPosition ->
             if (isPositionInbound(nextElementPosition)) {
                 sendFocusToListItem(nextElementPosition)
             } else {
-                rootView.findViewById<View>(R.id.carouselRV)?.sendAccessibilityFocus()
+                rootView.findViewById<View>(R.id.carousel_container)?.sendAccessibilityFocus()
             }
         }
         return true
     }
 
-    private fun onUpKeyPressed(currentFocus: View): Boolean = with(currentFocus) {
+    private fun consumeUpKeyOnGrid(currentFocus: View): Boolean = with(currentFocus) {
         getPreviousElementPosition().let { previousElementPosition ->
             if (isPositionInbound(previousElementPosition)) {
                 sendFocusToListItem(previousElementPosition)
@@ -67,6 +80,14 @@ class GridKeyEventDelegate : BaseKeyEventDelegate() {
                     ?.sendAccessibilityFocus(View.FOCUS_UP)
             }
         }
+        return true
+    }
+
+    private fun consumeLeftKeyOnGrid(currentFocus: View): Boolean {
+        return true
+    }
+
+    private fun consumeRightKeyOnGrid(currentFocus: View): Boolean {
         return true
     }
 }

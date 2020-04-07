@@ -20,7 +20,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridRV"
-        android:layout_width="@dimen/grid_width"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/grid_height"
         android:layout_marginTop="@dimen/general_margin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,15 +29,23 @@
         app:layout_constraintTop_toBottomOf="@id/accessibility_state"
         tools:listitem="@layout/grid_element_item" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/carouselRV"
-        android:layout_width="@dimen/carousel_width"
-        android:layout_height="@dimen/carousel_height"
-        android:importantForAccessibility="no"
+    <FrameLayout
+        android:id="@+id/carousel_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridRV"
-        tools:listitem="@layout/carousel_element_item" />
+        app:layout_constraintTop_toBottomOf="@+id/gridRV">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carouselRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/carousel_element_item" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/button_turn_on"
