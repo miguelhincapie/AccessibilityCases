@@ -156,8 +156,16 @@ class MainActivity : DaggerAppCompatActivity(),
     }
 
     private fun setAccessibility() {
-        listOf(accessibility_state, carousel_container, button_turn_off, button_turn_on).enableAccessibilityFocus()
-        carousel_container.contentDescription = String.format(getString(R.string.carousel_container_accessibility_description), AMOUNT_OF_DUMMY_DATA + 1)
+        listOf(
+            accessibility_state,
+            carousel_container,
+            button_turn_off,
+            button_turn_on
+        ).enableAccessibilityFocus()
+        carousel_container.contentDescription = String.format(
+            getString(R.string.carousel_container_accessibility_description),
+            AMOUNT_OF_DUMMY_DATA + 1
+        )
     }
 
     companion object {
