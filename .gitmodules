@@ -28,3 +28,6 @@
 [submodule "gist/ui_ext_fun_focus_gist"]
 	path = gist/ui_ext_fun_focus_gist
 	url = https://gist.github.com/miguelhincapie/f0de6dd92b0b21a2919c0496426e61f8
+[submodule "gist/carousel_key_event_delegate_gist"]
+	path = gist/carousel_key_event_delegate_gist
+	url = https://gist.github.com/miguelhincapie/04d97483e38b213f196f1876d7756699
