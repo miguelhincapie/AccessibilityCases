@@ -1,6 +1,12 @@
 # Accessibility Cases on Android
-This is the repository for this medium post.<br>
-Working with android accessibility you usually have to face some annoying behaviors. I summarized the solutions (edge cases) in this simple app.
+There are different kind of accessibility services that you can implement depends on your app's needs. I summarized them and a bunch of programming edge cases that I have had to face in multiple projects… almost all of them made me scream at least once.<br>
+* How to turn ON/OFF TalkBack accessibility service through my app
+* How to send accessibility focus to a specific UI element after TalkBack gets started
+* Accessibility with mvvm and delegate pattern
+* Navigate through a Grid
+* Navigating through Carousel (an horizontal RecyclerView)
+* Disabling buttons with accessibility
+* Different TalkBack ports and Android versions
 <br><br>
 <img width="300" src="https://github.com/miguelhincapie/AccessibilityCases/blob/master/docs/diagrams/mainview.png">  
 ### architecture
